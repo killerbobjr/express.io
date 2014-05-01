@@ -17,11 +17,10 @@ session = express.session
 delete express.session
 sessionConfig = new Object
 express.session = (options) ->
-    options ?= new Object
+    options ?= ''
     options.key ?= 'connect.sid'
     options.store ?= new session.MemoryStore
     options.cookie ?= new Object
-    sessionConfig = options
     return session options
 for key, value of session
     express.session[key] = value
@@ -35,7 +34,7 @@ express.application.https = (options) ->
     return this
 
 express.application.io = (options) ->
-    options ?= new Object
+    options ?= ''
     defaultOptions = log:false
     _.extend options, defaultOptions
     @io = io.listen @server, options

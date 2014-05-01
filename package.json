@@ -5,7 +5,7 @@
     "keywords": ["realtime", "web", "framework", "express.io", "express", "socket.io", "badass"],
     "homepage": "http://express-io.org",
     "author": "Brad Carleton <brad@techpines.com>",
-    "repository": "git://github.com/techpines/express.io",
+    "repository": "git://github.com/killerbobjr/express.io",
     "contributors": [{
         "name": "Brad Carleton",
         "email": "brad@techpines.com",
@@ -35,13 +35,13 @@
         "mocha": "*",
         "chai": "*",
         "socket.io-client": "*",
-        "jade": "*"
+        "jade": "*",
+	"shelljs-nodecli": "*"
     },
     "main": "switch.js",
     "scripts": {
         "test": "./node_modules/mocha/bin/mocha test/test.coffee",
         "compile": "./node_modules/coffee-script/bin/coffee -o compiled/ -c lib/",
-        "prepublish": "echo $(pwd) > /tmp/.pwd; ./node_modules/coffee-script/bin/coffee -o compiled/ -c lib/;",
-        "postpublish": "rm -rf $(cat /tmp/.pwd)/compiled"
+        "prepublish": "node ./scripts/prepublish.js"
     }
 }
