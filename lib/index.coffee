@@ -16,12 +16,19 @@ express.io.routeForward = middleware.routeForward
 session = express.session
 delete express.session
 sessionConfig = new Object
+
 express.session = (options) ->
-    options ?= ''
-    options.key ?= 'connect.sid'
-    options.store ?= new session.MemoryStore
-    options.cookie ?= new Object
-    return session options
+  if options is null
+    options =
+      key: "connect.sid"
+      store: session.MemoryStore
+      cookie:
+        path: "/"
+        httpOnly: true
+        secure: false
+        maxAge: {}
+  session options
+  
 for key, value of session
     express.session[key] = value
 
