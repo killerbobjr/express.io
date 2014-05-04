@@ -34,7 +34,7 @@ express.application.https = (options) ->
     return this
 
 express.application.io = (options) ->
-    options ?= ''
+    options ?= new Object
     defaultOptions = log:false
     _.extend options, defaultOptions
     @io = io.listen @server, options
